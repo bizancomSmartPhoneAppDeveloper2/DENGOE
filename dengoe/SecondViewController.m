@@ -33,44 +33,44 @@
 
 - (IBAction)rokuonStart:(UIButton *)sender {
     if (rokuonStarting == NO) {
-    audioSession = [AVAudioSession sharedInstance];
-    NSError *error = nil;
-    // 使用している機種が録音に対応しているか
-    if ([audioSession inputIsAvailable]) {
-        [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    }
-    if(error){
-        NSLog(@"audioSession: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
-    }
-    // 録音機能をアクティブにする
-    [audioSession setActive:YES error:&error];
-    if(error){
-        NSLog(@"audioSession: %@ %ld %@", [error domain], [error code], [[error userInfo] description]);
-    }
-    
-    // 録音ファイルパス
-    NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                             NSUserDomainMask,YES);
-    NSString *documentDir = [filePaths objectAtIndex:0];
-    NSString *path = [documentDir stringByAppendingPathComponent:@"rec.caf"];
-    NSURL *recordingURL = [NSURL fileURLWithPath:path];
-    
-    // 録音中に音量をとる場合はYES
-    //    AvRecorder.meteringEnabled = YES;
-    
-    avRecorder = [[AVAudioRecorder alloc] initWithURL:recordingURL settings:nil error:&error];
-    
-    if(error){
-        NSLog(@"error = %@",error);
-        return;
-    }
-    avRecorder.delegate=self;
-    //    ５秒録音して終了する場合
-    //    [avRecorder recordForDuration: 5.0];
-    [avRecorder record];
+        audioSession = [AVAudioSession sharedInstance];
+        NSError *error = nil;
+        // 使用している機種が録音に対応しているか
+        if ([audioSession inputIsAvailable]) {
+            [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+        }
+        if(error){
+            NSLog(@"audioSession: %@ %ld %@", [error domain], (long)[error code], [[error userInfo] description]);
+        }
+        // 録音機能をアクティブにする
+        [audioSession setActive:YES error:&error];
+        if(error){
+            NSLog(@"audioSession: %@ %ld %@", [error domain], (long)[error code], [[error userInfo] description]);
+        }
+        
+        // 録音ファイルパス
+        NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                 NSUserDomainMask,YES);
+        NSString *documentDir = [filePaths objectAtIndex:0];
+        NSString *path = [documentDir stringByAppendingPathComponent:@"rec.caf"];
+        NSURL *recordingURL = [NSURL fileURLWithPath:path];
+        
+        // 録音中に音量をとる場合はYES
+        //    AvRecorder.meteringEnabled = YES;
+        
+        avRecorder = [[AVAudioRecorder alloc] initWithURL:recordingURL settings:nil error:&error];
+        
+        if(error){
+            NSLog(@"error = %@",error);
+            return;
+        }
+        avRecorder.delegate=self;
+        //    ５秒録音して終了する場合
+        //    [avRecorder recordForDuration: 5.0];
+        [avRecorder record];
         rokuonStarting = YES;
         self.rokuonStartStopImage.alpha = 1;
-
+        
     }else if(rokuonStarting == YES){
         [avRecorder stop];
         rokuonStarting = NO;

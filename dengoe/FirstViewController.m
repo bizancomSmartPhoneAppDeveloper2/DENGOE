@@ -9,13 +9,12 @@
 #import "FirstViewController.h"
 #import "CustomAnnotation.h"
 #import <NCMB/NCMB.h>
-#import "tableTableViewController.h"
 
 @interface FirstViewController ()
 @end
 
 @implementation FirstViewController{
-    CLLocationDegrees latitude;
+    CLLocationDegrees latitude; //
     CLLocationDegrees longitude;
     CLLocationCoordinate2D co;
     double dbLat;
@@ -43,6 +42,7 @@
     NSString *defaultUserDate;
 }
 
+
 @synthesize locationManager;
 
 - (void)viewDidLoad {
@@ -69,14 +69,14 @@
     //ユーザが選択した都道府県があればそれをデフォルトとして表示する、保存されている都道府県を取り出してラベルに表示
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     defaultUserName = [defaults stringForKey:@"initialLetters"];
-
+    
     
     //保存されているはずのユーザが選択した都道府県に対応する天気APIのURLを取り出す
     NSUserDefaults *defaults_1 = [NSUserDefaults standardUserDefaults];
     defaultUserDate = [defaults_1 stringForKey:@"initialLetters_1"];
     NSLog(@"%@",defaultUserDate);
-
-
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,12 +123,15 @@
 //アノテーションのコールアウトに追加したボタンがタップされるとこのメソッドが呼ばれる
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    tableTableViewController *tableView = [self.storyboard instantiateViewControllerWithIdentifier:@"tableView"];
-    [self presentViewController:tableView animated:YES completion:nil];
     
+    NSLog(@"%d", ((CustomAnnotation *)view.annotation).annoId);
     
+    // IDを指定してSegueを呼び出します。
+    // IDを条件分岐することによって2つ目のViewと入れ替える事ができます。
+    [self performSegueWithIdentifier:@"callsoundPHP" sender:self];
+    //画面遷移するメソッド
     
-    }
+}
 
 -(void)subViewClose:(UIButton*)stampPanelCloseBtn{
     // subviewを隠す
@@ -153,7 +156,7 @@
     avPlayer.delegate = self;
     avPlayer.volume=1.0;
     [avPlayer play];
-
+    
 }
 
 -(void)locationManagerMethod{
@@ -204,7 +207,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     longitude = location.coordinate.longitude;
     [self.locationManager stopUpdatingLocation];
     [self defaultMapSettei];
-
+    
 }
 
 -(void)defaultMapSettei{
@@ -261,7 +264,9 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
 }
 
--(void)getObject{
+
+-(void)getObject
+{
     NCMBQuery *query = [NCMBQuery queryWithClassName:@"Places"];
     [query whereKey:@"areaName" equalTo:@"新宿駅"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objs, NSError *error) {
@@ -324,41 +329,65 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     }];
     
     //[self QuerySearch];
-
+    
 }
 
 -(void)newAnnotation{
-        //デリゲートを自分自身に設定
-        self.map.delegate = self;
-        //緯度と経度情報を格納する変数の初期化(鳴門市文化会館に設定)
-        co.latitude = 34.071252;
-        co.longitude = 134.556152;
-        //coを元にsampleannotetion型の変数を生成
-        CustomAnnotation *annotetion = [[CustomAnnotation alloc]initwithCoordinate:co];
-        annotetion.title = @"文化センター　掲示板";
-        annotetion.subtitle = @"1件の伝声があります";
-        //MKCooredinateRegionの変数の初期化
-        MKCoordinateRegion region = self.map.region;
-        //マップが表示された時の中心の経度設定
-        region.center.longitude = co.longitude;
-        //マップが表示された時の中心の緯度設定
-        region.center.latitude = co.latitude;
-        //緯度と経度情報を格納する変数の値を変更
-        co.latitude = 34.073456;
-        co.longitude = 134.54946;
-        //coを元にsampleannotetion型の2つめの変数を生成
-        CustomAnnotation *annotetion2 = [[CustomAnnotation alloc]initwithCoordinate:co];
-        annotetion2.title = @"そごう　掲示板";
-        annotetion2.subtitle = @"1件の伝声があります";
-        //現在地から店の距離によってマップの縮尺度を設定(幅1km分にする)
-        region.span.latitudeDelta = 1 / 111.2;
-        region.span.longitudeDelta = 1 / 111.2;
-        [self.map setRegion:region];
-        //2つアノテーションを追加
-        [self.map addAnnotation:annotetion];
-        [self.map addAnnotation:annotetion2];
-        self.map.showsUserLocation = YES;
+    //デリゲートを自分自身に設定
+    self.map.delegate = self;
+    
+    //緯度と経度情報を格納する変数の初期化(鳴門市文化会館に設定)
+    co.latitude   = 34.067353;
+    co.longitude = 134.537657;
+    //coを元にsampleannotetion型の変数を生成
+    CustomAnnotation *annotetion = [[CustomAnnotation alloc]initwithCoordinate:co];
+    annotetion.annoId = 1;
+    annotetion.title = @"眉山　掲示板";
+    annotetion.subtitle = @"1件の伝声があります";
+    //MKCooredinateRegionの変数の初期化
+    MKCoordinateRegion region = self.map.region;
+    //マップが表示された時の中心の経度設定
+    region.center.longitude = co.longitude;
+    //マップが表示された時の中心の緯度設定
+    region.center.latitude = co.latitude;
+    
+    
+    //緯度と経度情報を格納する変数の値を変更
+    co.latitude = 34.074301;
+    co.longitude = 134.5509058;
+    //coを元にsampleannotetion型の2つめの変数を生成
+    CustomAnnotation *annotetion2 = [[CustomAnnotation alloc]initwithCoordinate:co];
+    annotetion2.annoId = 2;
+    annotetion2.title = @"徳島駅　掲示板";
+    annotetion2.subtitle = @"1件の伝声があります";
+    //現在地から店の距離によってマップの縮尺度を設定(幅1km分にする)
+    region.span.latitudeDelta = 1 / 111.2;
+    region.span.longitudeDelta = 1 / 111.2;
+    
+    
+    //三カ所目アノテーション、剣山に設定
+    co.latitude = 33.854443;
+    co.longitude =134.095155;
+    
+    CustomAnnotation *annotetion3 = [[CustomAnnotation alloc]initwithCoordinate:co];
+    annotetion3.annoId = 3;
+    annotetion3.title = @"剣山　掲示板";
+    annotetion3.subtitle = @"1件の伝声があります";
+    
+    
+    
+    [self.map setRegion:region];
+    //2つアノテーションを追加
+    [self.map addAnnotation:annotetion];
+    [self.map addAnnotation:annotetion2];
+    [self.map addAnnotation:annotetion3];
+    
+    
+    self.map.showsUserLocation = YES;
 }
+
+
+
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id < MKOverlay >)overlay
 {

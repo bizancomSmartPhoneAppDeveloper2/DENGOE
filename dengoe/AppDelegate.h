@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "tableTableViewController.h"
 
 @class tableView;
 
 @interface AppDelegate : UIResponder<UIApplicationDelegate> {
-    tableTableViewController *tableViewController;
+    
 }
 @property (strong, nonatomic) UIWindow *window;
 // ここに受け渡ししたい変数を宣言
