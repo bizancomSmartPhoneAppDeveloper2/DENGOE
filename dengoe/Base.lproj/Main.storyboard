@@ -27,11 +27,40 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="map" destination="10a-u0-yLz" id="dVK-24-N5N"/>
+                        <segue destination="W7K-yt-yzH" kind="presentation" identifier="callsoundPHP" id="Qfi-Lv-TgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
+        </scene>
+        <!--PtoPHP View Controller-->
+        <scene sceneID="1ZZ-VM-BU5">
+            <objects>
+                <viewController id="W7K-yt-yzH" customClass="JANPtoPHPViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hjy-oG-c5a"/>
+                        <viewControllerLayoutGuide type="bottom" id="wlb-9I-mf6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pak-p4-43T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODT-Sw-LnS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="webPHP" destination="ODT-Sw-LnS" id="AIu-1H-9y8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tWs-bs-dVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="-494"/>
         </scene>
         <!--声を登録-->
         <scene sceneID="wg7-f3-ORb">

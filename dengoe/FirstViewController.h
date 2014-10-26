@@ -28,6 +28,7 @@
 @property(nonatomic,copy)NSString *subtitle;
 //初期化用のメソッド
 //マップの変数
+//@property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @end

@@ -32,6 +32,7 @@
 		07ECD39E19F69DD500EF8EBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECD39B19F69DD500EF8EBB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07ECD39F19F69DD500EF8EBB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 07ECD39C19F69DD500EF8EBB /* README.md */; };
 		07ECD3A119F7566700EF8EBB /* hitsuji.png in Resources */ = {isa = PBXBuildFile; fileRef = 07ECD3A019F7566700EF8EBB /* hitsuji.png */; };
+		7D7F30C819FC926E006EB58E /* JANPtoPHPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F30C719FC926E006EB58E /* JANPtoPHPViewController.m */; };
 		7D942B4E19FC8BE8002841C1 /* NCMB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D942B4D19FC8BE8002841C1 /* NCMB.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		07ECD39B19F69DD500EF8EBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		07ECD39C19F69DD500EF8EBB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		07ECD3A019F7566700EF8EBB /* hitsuji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitsuji.png; sourceTree = "<group>"; };
+		7D7F30C619FC926E006EB58E /* JANPtoPHPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANPtoPHPViewController.h; sourceTree = "<group>"; };
+		7D7F30C719FC926E006EB58E /* JANPtoPHPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JANPtoPHPViewController.m; sourceTree = "<group>"; };
 		7D942B4D19FC8BE8002841C1 /* NCMB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NCMB.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +153,8 @@
 				07BED0E419F5F1DC00BB7759 /* SecondViewController.h */,
 				07BED0E519F5F1DC00BB7759 /* SecondViewController.m */,
 				07BED0E719F5F1DC00BB7759 /* Main.storyboard */,
+				7D7F30C619FC926E006EB58E /* JANPtoPHPViewController.h */,
+				7D7F30C719FC926E006EB58E /* JANPtoPHPViewController.m */,
 				07BED0EA19F5F1DC00BB7759 /* Images.xcassets */,
 				07BED0EC19F5F1DC00BB7759 /* LaunchScreen.xib */,
 				07BED0DA19F5F1DC00BB7759 /* Supporting Files */,
@@ -248,6 +253,7 @@
 				TargetAttributes = {
 					07BED0D619F5F1DC00BB7759 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = ALGGF43MAA;
 					};
 					07BED0F219F5F1DD00BB7759 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -304,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7F30C819FC926E006EB58E /* JANPtoPHPViewController.m in Sources */,
 				07BED0E619F5F1DC00BB7759 /* SecondViewController.m in Sources */,
 				07ECD39D19F69DD500EF8EBB /* CHANGELOG.md in Sources */,
 				07BED0E019F5F1DC00BB7759 /* AppDelegate.m in Sources */,
@@ -436,12 +443,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/bizan04/Downloads,
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = dengoe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -451,12 +460,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/bizan04/Downloads,
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = dengoe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
