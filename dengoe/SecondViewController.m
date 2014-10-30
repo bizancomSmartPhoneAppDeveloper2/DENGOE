@@ -37,9 +37,9 @@
     rokuonStarting = NO;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    //self.tokushimaTourokuImage.hidden = YES;
-    //self.bizanTourokuImage.hidden = YES;
-    //self.tsurugisanTourokuImage.hidden = YES;
+    self.tokushimaTourokuImage.hidden = YES;
+    self.bizanTourokuImage.hidden = YES;
+    self.tsurugisanTourokuImage.hidden = YES;
     
     self.myTextField.delegate = self;
     self.labelONmike.hidden = NO;
@@ -58,7 +58,7 @@
     buttonTitleArray =
     [NSMutableArray arrayWithObjects:@"徳島の掲示板", @"眉山の掲示板", @"剣山の掲示板", nil];
     
-    //[self rokuonStartHidden];
+    [self rokuonStartHidden];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -349,29 +349,27 @@
 }
 
 -(void)rokuonStartHidden{
-    //領域内のボタンが押された場合はWebViewに遷移
+    
     for (int i = 0; i < inRejon.count; i++) {
         NSLog(@"%daaaaaa%@%@",(inRejon.count),[inRejon objectAtIndex:0],[inRejon objectAtIndex:1]);
     
-        if ([inRejon containsObject:buttonTitleArray[i]]) {
-            if ([buttonTitleArray[i] isEqualToString:@"徳島駅の掲示板"]) {
-                NSLog(@"aaaaa");
+        if ([inRejon containsObject:@"徳島駅の掲示板"]) {
                 self.tokushimaTourokuImage.hidden = NO;
             }else{
                 nil;
             }
-            if ([buttonTitleArray[i] isEqualToString:@"眉山の掲示板"]) {
+        if ([buttonTitleArray[i] isEqualToString:@"眉山の掲示板"]) {
                 self.bizanTourokuImage.hidden = NO;
-            }else{
+        }else{
                 nil;
             }
 
-            if ([buttonTitleArray[i] isEqualToString:@"剣山の掲示板"]) {
+        if ([buttonTitleArray[i] isEqualToString:@"剣山の掲示板"]) {
                 self.tsurugisanTourokuImage.hidden = NO;
-            }else{
+        }else{
                 nil;
             }
         }
-    }
+    
 }
 @end
